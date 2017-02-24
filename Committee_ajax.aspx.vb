@@ -329,7 +329,7 @@ Partial Class AdminConfig_Committee_ajax
         cmd.CommandType = CommandType.StoredProcedure
         cmd.CommandText = """sp_InsertCommitteeMember"""
         cmd.Parameters.Add(New OracleParameter("vCommitteeMemberId", OracleDbType.Int32)).Value = liMaxCommitteeMemberId
-        cmd.Parameters.Add(New OracleParameter("vEventId", OracleDbType.Int32)).Value = vEventId
+        cmd.Parameters.Add(New OracleParameter("vEventId", OracleDbType.NVarchar2)).Value = vEventId
         cmd.Parameters.Add(New OracleParameter("vMemberTypeId", OracleDbType.Int32)).Value = vMemberTypeId
         cmd.Parameters.Add(New OracleParameter("vUserId", OracleDbType.NVarchar2)).Value = vUserId
         cmd.Parameters.Add(New OracleParameter("vBranchId", OracleDbType.Int32)).Value = vBranchId
