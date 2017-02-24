@@ -18,7 +18,7 @@
     <link href="css/pagination_ys.css" rel="stylesheet" />
     <link href="css/datapicker/datepicker3.css" rel="stylesheet" />
     <link href="css/Grid.css" rel="stylesheet" />
-
+    
 </head>
 
 <body>
@@ -116,10 +116,13 @@
 <script>
     var committNum = 2;
     var branchNum = 0;
+
     var v_rowId = -1;
-    var v_eventId = -1;
+    //รับค่าจากหน้าเต้ย
+    //var v_eventId = 1;
+    var v_eventId = <%=eventId %>;
     $(document).ready(function () {
-        LoadDefault(1);
+        LoadDefault(v_eventId);
         //load dropdown สำหรับกรรมการคนที่ 1-3
         for (j = 0; j <= 2; j++) {
             innerDrw(j, "committ", -1);
@@ -172,11 +175,11 @@
                 }
                 for (j = 0 ; j <= branchNum; j++) {
                     //alert($("#commit" + i).val() + "," + $("#branch" + j).val());
-                    addDataToDB("1", memberTypeId, $("#commit" + i).val(), $("#branch" + j).val(), rownum);
+                    addDataToDB(v_eventId, memberTypeId, $("#commit" + i).val(), $("#branch" + j).val(), rownum);
                 }
             }
             alert("บันทึกข้อมูลเรียบร้อย");
-            LoadDefault(1);
+            LoadDefault(v_eventId);
             $('#myModal').modal('hide');
             LoadDropdownDefault();
             $('html, body').animate({ scrollTop: $("#dataTable").offset().top }, 2000);
@@ -211,11 +214,11 @@
                 }
                 for (j = 0 ; j <= branchNum; j++) {
                     //alert($("#commit" + i).val() + "," + $("#branch" + j).val());
-                    addDataToDB("1", memberTypeId, $("#commit" + i).val(), $("#branch" + j).val(), rownum);
+                    addDataToDB(v_eventId, memberTypeId, $("#commit" + i).val(), $("#branch" + j).val(), rownum);
                 }
             }
             alert("อัพเดทข้อมูลเรียบร้อย");
-            LoadDefault(1);
+            LoadDefault(v_eventId);
             $('#myModal').modal('hide');
             LoadDropdownDefault();
             //$('html, body').animate({ scrollTop: $("#dataTable").offset().top }, 2000);
@@ -366,7 +369,7 @@
                 success: function (data) {
                     if (data.trim() == "True") {
                         //alert("ลบข้อมูลเรียบร้อย");
-                        LoadDefault(1);
+                        LoadDefault(v_eventId);
                     } else {
                         alert("เกิดความผิดพลาด");
                     }
@@ -459,5 +462,6 @@
         var element = "#branchNumRow" + num;
         $("" + element + "").remove();
     }
+    //////
 </script>
 </html>
